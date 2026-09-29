@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8F3F2E" />
+  <meta name="description" content="Join Sanchari's Journaling Club: a guided journaling journey with daily prompts, Tuesday live Journal Labs, accountability and 11 practical ways to journal." />
+  <title>The Journaling Club by Sanchari</title>
+  <style>
+    :root{
+      --paper:#fbf4e8;
+      --paper-2:#fffaf2;
+      --ink:#2c211b;
+      --muted:#75665c;
+      --rust:#9a432e;
+      --rust-2:#b65a3c;
+      --sage:#8d9a76;
+      --sage-soft:#e8eadf;
+      --peach:#ecd0bd;
+      --line:#ddcbb9;
+      --shadow:0 18px 60px rgba(70,41,25,.12);
+      --serif:Georgia, 'Times New Roman', serif;
+      --sans:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:var(--sans);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(182,90,60,.08), transparent 24rem),
+        radial-gradient(circle at 90% 26%, rgba(141,154,118,.10), transparent 26rem),
+        var(--paper);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;z-index:-1;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+    }
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+
+    .joinbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(44,33,27,.96);color:#fff;
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .joinbar .inner{min-height:54px;display:flex;align-items:center;justify-content:center;gap:16px;text-align:center}
+    .joinbar p{margin:0;font-weight:700;font-size:14px;letter-spacing:.01em}
+    .joinbar a{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--ink);text-decoration:none;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+
+    nav{padding:18px 0 8px}
+    nav .row{display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .brand{font-family:var(--serif);font-size:22px;line-height:1}
+    .brand small{display:block;font-family:var(--sans);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+    .navlinks{display:flex;gap:24px;align-items:center;font-size:13px;font-weight:700}
+    .navlinks a{text-decoration:none;color:var(--muted)}
+    .navlinks .nav-cta{color:#fff;background:var(--rust);padding:10px 14px;border-radius:999px}
+
+    .hero{padding:42px 0 52px}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.46);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.11em;color:var(--rust)}
+    h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,6.4vw,88px);line-height:.94;letter-spacing:-.035em;margin:22px 0 24px;max-width:820px}
+    h1 em{font-style:italic;color:var(--rust)}
+    .lead{font-size:19px;line-height:1.55;color:#51453d;max-width:680px;margin:0 0 26px}
+    .promise{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-left:3px solid var(--sage);background:rgba(255,255,255,.45);max-width:680px;font-weight:600}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;text-decoration:none;border-radius:14px;padding:15px 21px;font-size:15px;font-weight:800;transition:.18s ease;cursor:pointer;border:0}
+    .btn-primary{background:var(--rust);color:#fff;box-shadow:0 10px 28px rgba(154,67,46,.22)}
+    .btn-primary:hover{transform:translateY(-2px);background:#823723}
+    .btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.56);color:var(--ink)}
+    .micro{font-size:12px;color:var(--muted);margin-top:10px}
+    .social-proof{display:flex;gap:10px;align-items:center;margin-top:22px;color:var(--muted);font-size:13px;font-weight:700}
+    .proof-dot{width:10px;height:10px;background:var(--sage);border-radius:50%;box-shadow:0 0 0 5px rgba(141,154,118,.16)}
+
+    .hero-visual{position:relative}
+    .photo-shell{padding:12px;background:#f5e6d3;box-shadow:var(--shadow);transform:rotate(1.2deg);border:1px solid rgba(99,61,38,.12)}
+    .photo-shell img{aspect-ratio:3/4;object-fit:cover;width:100%;filter:saturate(.98) contrast(.98)}
+    .photo-note{position:absolute;left:-30px;bottom:32px;background:#fff8e9;padding:16px 18px;width:220px;box-shadow:0 14px 38px rgba(65,39,22,.18);transform:rotate(-3deg);font-family:var(--serif);font-size:22px;line-height:1.05;border:1px solid var(--line)}
+    .photo-note span{display:block;font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-top:10px;font-weight:800}
+
+    .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.35)}
+    .strip .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .strip article{padding:22px 22px;border-right:1px solid var(--line)}
+    .strip article:last-child{border-right:0}
+    .strip b{font-family:var(--serif);font-size:22px;font-weight:400;display:block;margin-bottom:3px}
+    .strip span{color:var(--muted);font-size:12px;font-weight:600}
+
+    section{padding:78px 0}
+    .section-head{max-width:760px;margin-bottom:36px}
+    .kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--rust)}
+    h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,60px);line-height:1.02;margin:10px 0 12px;letter-spacing:-.025em}
+    .section-head p{margin:0;color:var(--muted);font-size:17px}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .step{position:relative;overflow:hidden;background:var(--paper-2);padding:28px;border:1px solid var(--line);border-radius:20px;min-height:250px;box-shadow:0 12px 36px rgba(70,41,25,.06)}
+    .step:before{content:"";position:absolute;right:-36px;top:-46px;width:132px;height:132px;border-radius:50%;background:rgba(182,90,60,.08)}
+    .step-num{font-family:var(--serif);font-size:42px;color:var(--rust)}
+    .step h3{font-family:var(--serif);font-size:29px;font-weight:400;margin:14px 0 10px}
+    .step p{color:var(--muted);margin:0}
+
+    .inside{background:#efe7d8;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .inside-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:46px;align-items:start}
+    .big-card{background:var(--rust);color:white;padding:34px;border-radius:24px;position:sticky;top:86px;box-shadow:var(--shadow)}
+    .big-card .quote{font-family:var(--serif);font-size:38px;line-height:1.04;margin:0 0 28px}
+    .big-card p{color:rgba(255,255,255,.8)}
+    .big-card .btn{background:white;color:var(--rust);margin-top:12px}
+    .benefits{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .benefit{background:rgba(255,255,255,.54);padding:22px;border-radius:16px;border:1px solid rgba(106,76,52,.12)}
+    .benefit-icon{font-size:24px}
+    .benefit h3{font-family:var(--serif);font-size:24px;font-weight:400;margin:10px 0 5px}
+    .benefit p{font-size:13px;color:var(--muted);margin:0}
+
+    .styles-wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+    .style-list{display:flex;flex-wrap:wrap;gap:10px}
+    .style-list span{padding:10px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700}
+    .journal-sheet{position:relative;background:#fffdf8;border:1px solid #d9c7b5;min-height:420px;padding:42px 44px 38px 72px;box-shadow:var(--shadow);transform:rotate(-1deg)}
+    .journal-sheet:before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:#dfa89d}
+    .journal-sheet:after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(110,130,152,.14) 32px);pointer-events:none}
+    .journal-sheet > *{position:relative;z-index:2}
+    .journal-sheet h3{font-family:var(--serif);font-size:42px;font-weight:400;margin:0 0 18px;color:var(--rust)}
+    .journal-sheet p{font-size:16px;line-height:2;margin:0}
+
+    .privacy{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .privacy > div{border-radius:20px;padding:28px;border:1px solid var(--line);background:rgba(255,255,255,.46)}
+    .privacy h3{font-family:var(--serif);font-size:28px;font-weight:400;margin:0 0 8px}
+    .privacy p{margin:0;color:var(--muted)}
+
+    .faq{max-width:820px;margin:auto}
+    details{border-top:1px solid var(--line);padding:18px 4px}
+    details:last-child{border-bottom:1px solid var(--line)}
+    summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";font-size:24px;line-height:.8;color:var(--rust)}
+    details[open] summary:after{content:"–"}
+    details p{color:var(--muted);margin:12px 0 0}
+
+    .final-cta{padding-top:30px}
+    .cta-box{background:var(--ink);color:#fff;border-radius:28px;padding:54px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:end;box-shadow:var(--shadow)}
+    .cta-box h2{margin:0;color:#fff;max-width:700px}
+    .cta-box p{color:rgba(255,255,255,.67);font-size:16px}
+    .cta-right{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+    .cta-right .btn{background:#fff;color:var(--ink);font-size:16px}
+    .cta-right small{text-align:center;color:rgba(255,255,255,.56)}
+
+    footer{padding:38px 0 110px;color:var(--muted);font-size:12px}
+    footer .row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+
+    .mobile-cta{display:none}
+
+    @media(max-width:900px){
+      .navlinks a:not(.nav-cta){display:none}
+      .hero{padding-top:30px}
+      .hero-grid,.inside-grid,.styles-wrap,.cta-box{grid-template-columns:1fr}
+      .hero-visual{max-width:620px;margin:4px auto 0}
+      .photo-note{left:12px;bottom:18px}
+      .strip .grid{grid-template-columns:1fr 1fr}
+      .strip article:nth-child(2){border-right:0}
+      .strip article:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .steps{grid-template-columns:1fr}
+      .big-card{position:relative;top:0}
+      .benefits{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 22px))}
+      .joinbar .inner{justify-content:space-between;min-height:58px}
+      .joinbar p{font-size:12px;text-align:left;line-height:1.3}
+      .joinbar a{padding:8px 11px;font-size:12px}
+      nav{padding-top:14px}
+      .brand{font-size:19px}
+      .navlinks{display:none}
+      .hero{padding:24px 0 38px}
+      h1{font-size:clamp(47px,14vw,68px);margin-top:17px}
+      .lead{font-size:17px}
+      .promise{font-size:14px}
+      .hero-actions{display:block}
+      .hero-actions .btn{width:100%;margin-bottom:10px}
+      .photo-shell{padding:8px}
+      .photo-note{width:176px;font-size:18px;padding:13px 14px}
+      .strip .grid{grid-template-columns:1fr 1fr}
+      .strip article{padding:17px 13px}
+      .strip b{font-size:18px}
+      section{padding:58px 0}
+      .section-head p{font-size:15px}
+      .step{min-height:auto;padding:22px}
+      .benefits{grid-template-columns:1fr}
+      .big-card{padding:28px}
+      .big-card .quote{font-size:32px}
+      .journal-sheet{padding:34px 24px 32px 52px;min-height:350px}
+      .journal-sheet:before{left:34px}
+      .journal-sheet h3{font-size:35px}
+      .privacy{grid-template-columns:1fr}
+      .cta-box{padding:34px 22px;border-radius:22px}
+      .cta-box h2{font-size:42px}
+      footer .row{align-items:flex-start;flex-direction:column}
+      .mobile-cta{display:block;position:fixed;left:10px;right:10px;bottom:10px;z-index:60}
+      .mobile-cta a{display:flex;justify-content:center;align-items:center;padding:15px 18px;border-radius:14px;background:var(--rust);color:white;text-decoration:none;font-weight:800;box-shadow:0 10px 32px rgba(68,40,24,.28)}
+    }
+  </style>
+</head>
+<body>
+  <div class="joinbar">
+    <div class="wrap inner">
+      <p>📓 Rolling admissions are open. Start your journaling journey today.</p>
+      <a data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Join now →</a>
+    </div>
+  </div>
+
+  <nav>
+    <div class="wrap row">
+      <div class="brand">The Journaling Club <small>with Sanchari</small></div>
+      <div class="navlinks">
+        <a href="#how">How it works</a>
+        <a href="#inside">What you get</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Join the club</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">100 days · 11 ways to journal</span>
+          <h1>If you start today, you could feel <em>unrecognisable</em> by 2027.</h1>
+          <p class="lead">Not because January magically changes you. Because you spent the next 100 days actually showing up for yourself.</p>
+          <div class="promise">100 days to build a journaling habit, understand yourself better, get clear on what you want and enter 2027 with a plan for the life you want to create.</div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Take the journaling challenge →</a>
+            <a class="btn btn-secondary" href="#inside">See what's inside</a>
+          </div>
+          <div class="micro">Join anytime. No catching up required. Start with today's page.</div>
+          <div class="social-proof"><span class="proof-dot"></span> 60+ members are already journaling with us.</div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo-shell">
+            <img src="data:image/jpeg;base64,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[... ELLIPSIZATION ...]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" alt="Sanchari surrounded by her journals" />
+          </div>
+          <div class="photo-note">Your journal does not need to be perfect. It needs to be <em>yours.</em><span>Sanchari</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap grid">
+        <article><b>5–10 min</b><span>a simple daily practice</span></article>
+        <article><b>Tuesday 9 PM</b><span>Live Journal Lab</span></article>
+        <article><b>11 styles</b><span>learn what works for you</span></article>
+        <article><b>Journal Trios</b><span>gentle accountability</span></article>
+      </div>
+    </div>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">How it works</div>
+          <h2>One small ritual. A lot can change.</h2>
+          <p>This is not another course you collect and forget. The club is designed to become part of your actual day.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><h3>Open today's prompt</h3><p>You get one clear prompt each day. No searching old messages. No wondering what to write.</p></div>
+          <div class="step"><div class="step-num">02</div><h3>Journal for a few minutes</h3><p>Write privately in your own journal. Some days you plan. Some days you reflect. Some days you paint.</p></div>
+          <div class="step"><div class="step-num">03</div><h3>Keep showing up</h3><p>Track your progress, meet your accountability trio and learn a new journaling method in Tuesday's live class.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inside" id="inside">
+      <div class="wrap inside-grid">
+        <div class="big-card">
+          <div class="kicker" style="color:#f4d7c7">Inside the club</div>
+          <p class="quote">A journal that slowly becomes a map of your life.</p>
+          <p>You don't have to become “a person who journals.” You learn how to use journaling when you need clarity, direction, release, creativity or a plan.</p>
+          <a class="btn" data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Join the Journaling Club →</a>
+        </div>
+        <div class="benefits">
+          <div class="benefit"><div class="benefit-icon">✍️</div><h3>Daily guided prompts</h3><p>One thoughtful prompt each day, designed to take around 5–10 minutes.</p></div>
+          <div class="benefit"><div class="benefit-icon">🎙️</div><h3>Tuesday Live Journal Lab</h3><p>Learn and practise a different journaling method with Sanchari every week.</p></div>
+          <div class="benefit"><div class="benefit-icon">🧭</div><h3>Journal of the Week</h3><p>A deeper weekly practice so the learning becomes something you actually use.</p></div>
+          <div class="benefit"><div class="benefit-icon">👯</div><h3>Accountability Trio</h3><p>A small group to help you show up. You never have to share private journal pages.</p></div>
+          <div class="benefit"><div class="benefit-icon">📚</div><h3>Journaling Toolbox</h3><p>Build your personal library of methods you can return to long after the challenge.</p></div>
+          <div class="benefit"><div class="benefit-icon">🌱</div><h3>Rolling admission</h3><p>Join whenever you're ready. Your Day 1 begins when you do, and you start with today's page.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap styles-wrap">
+        <div>
+          <div class="section-head" style="margin-bottom:24px">
+            <div class="kicker">11 ways to journal</div>
+            <h2>Not every day needs the same kind of page.</h2>
+            <p>By the end, you'll know which kind of journaling to reach for depending on what life is asking from you.</p>
+          </div>
+          <div class="style-list">
+            <span>Daily journaling</span><span>Planning</span><span>Ikigai</span><span>Chakra</span><span>Watercolour</span><span>Visual / sketchnote</span><span>Emotional release</span><span>Health & body</span><span>Spiritual</span><span>Memory / junk journal</span><span>Future-self & manifestation</span>
+          </div>
+        </div>
+        <div class="journal-sheet">
+          <h3>Use your journal for real life.</h3>
+          <p>When your head feels crowded → <strong>clear it.</strong><br>When you don't know what you want → <strong>explore it.</strong><br>When a goal feels vague → <strong>plan it.</strong><br>When a feeling won't leave → <strong>name it.</strong><br>When life is moving too fast → <strong>remember it.</strong><br>When you're ready for what's next → <strong>design it.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:10px">
+      <div class="wrap privacy">
+        <div><h3>Your journal stays yours.</h3><p>You are never required to upload or publicly share your personal journal pages. The point is reflection, not performance.</p></div>
+        <div><h3>Missed a few days?</h3><p>No guilt pile waiting for you. No catching up required. Open today's page and begin again.</p></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap faq">
+        <div class="section-head">
+          <div class="kicker">Questions</div>
+          <h2>Before you open a fresh page…</h2>
+        </div>
+        <details open><summary>What if I've never journaled consistently before?</summary><p>That's exactly what the club is built for. The daily practice is intentionally small, and the live classes teach you different ways to journal so you don't get stuck staring at a blank page.</p></details>
+        <details><summary>How much time do I need every day?</summary><p>Most daily prompts are designed for about 5–10 minutes. You can always stay longer when a page wants more of you.</p></details>
+        <details><summary>What happens if I join late?</summary><p>You start with today's prompt. Your personal Day 1 begins when you join, while you participate in the club's current theme. Past prompts can be explored later without becoming homework.</p></details>
+        <details><summary>Do I have to share what I write?</summary><p>No. Your journal can remain completely private. Accountability is about showing up, not exposing personal writing.</p></details>
+        <details><summary>What happens in the Tuesday live classes?</summary><p>Tuesday's Journal Lab introduces a practical journaling style or application and gives you the week's deeper journal exercise.</p></details>
+        <details><summary>Are replays available?</summary><p>Weekly class replays are added to the member space so you can revisit the learning when needed.</p></details>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="wrap cta-box">
+        <div>
+          <div class="kicker" style="color:#dcb9a3">Start with today's page</div>
+          <h2>You don't need a new year to become a new version of yourself.</h2>
+          <p>Give yourself the next 100 days. One page at a time.</p>
+        </div>
+        <div class="cta-right">
+          <a class="btn" data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Join the Journaling Club →</a>
+          <small>You'll be taken to the secure enrolment page.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap row">
+      <div><strong>The Journaling Club by Sanchari</strong><br>Daily prompts · Tuesday Journal Labs · Creative reflection</div>
+      <div>© 2026 · Create with Sanchari</div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta"><a data-checkout href="https://soulgrow.exlyapp.com/checkout/9de5f59f-b208-4ac6-84ce-2218a8b1d436">Join the Journaling Club →</a></div>
+
+  <script>
+    // Lightweight CTA click tagging without third-party analytics.
+    document.querySelectorAll('[data-checkout]').forEach((link) => {
+      link.addEventListener('click', () => {
+        try { sessionStorage.setItem('journalingClubCheckoutClickedAt', new Date().toISOString()); } catch(e) {}
+      });
+    });
+  </script>
+</body>
+</html>
